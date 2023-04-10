@@ -22,7 +22,7 @@ namespace dotNET_9
             this.city = city;
         }
 
-        public void printAddressInfo()
+        public void PrintAddressInfo()
         {
             Console.WriteLine($"Street:{street}");
             Console.WriteLine($"House:{house}");

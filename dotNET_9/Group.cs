@@ -68,7 +68,7 @@ namespace dotNET_9
 
             for(int i = 0; i < sortStuds.Count(); i++)
             {
-                Console.WriteLine($"{i + 1}. {sortStuds[i].Name} - {sortStuds[i].getDateOfBirth()}");
+                Console.WriteLine($"{i + 1}. {sortStuds[i].Name} - {sortStuds[i].GetDateOfBirth()}");
             }
         }
 
@@ -96,7 +96,7 @@ namespace dotNET_9
         {
             for(int i = 0; i < studs.Count(); i++)
             {
-                if(!studs[i].getIsPassed())
+                if(!studs[i].GetIsPassed())
                 {
                     studs.RemoveAt(i);
                 }
@@ -131,6 +131,22 @@ namespace dotNET_9
         public static bool operator ==(Group grp1, Group grp2)
         {
             return grp1.studs.Count == grp2.studs.Count;
+        }
+
+        public Student this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < studs.Count)
+                    return studs[index];
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
+            set
+            {
+                if (index >= 0 && index < studs.Count)
+                    studs[index] = value;
+            }
         }
     }
 }

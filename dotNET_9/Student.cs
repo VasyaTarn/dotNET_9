@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 
 namespace dotNET_9
 {
-    class Student
+
+    class Student : Person
     {
         private string lastName;
         private string name;
@@ -93,24 +95,24 @@ namespace dotNET_9
             }
         }
 
-        public void setDateOfBirth(int day, int month, int year)
+        public void SetDateOfBirth(int day, int month, int year)
         {
             dateOfBirth = new DateTime(year, month, day);
         }
 
-        public void setAddress(string steet, int house, int apart, string city)
+        public void SetAddress(string steet, int house, int apart, string city)
         {
             address = new Address(steet, house, apart, city);
         }
 
-        public string getDateOfBirth()
+        public string GetDateOfBirth()
         {
             return dateOfBirth.ToShortDateString();
         }
 
-        public void getAddress()
+        public void GetAddress()
         {
-            address.printAddressInfo();
+            address.PrintAddressInfo();
         }
 
         public string PhoneN
@@ -141,12 +143,12 @@ namespace dotNET_9
             }
         }
 
-        public void setIsPassed(bool isPassed)
+        public void SetIsPassed(bool isPassed)
         {
             this.isPassed = isPassed;
         }
 
-        public bool getIsPassed()
+        public bool GetIsPassed()
         {
             return isPassed;
         }
@@ -161,14 +163,17 @@ namespace dotNET_9
             return std1.avrgGrade == std2.avrgGrade;
         }
 
-        public void printStudentInfo()
+        public void PrintStudentInfo()
         {
             Console.WriteLine($"Last name:{LName}");
             Console.WriteLine($"Name:{Name}");
             Console.WriteLine($"Surname:{Surname}");
-            Console.WriteLine($"Date of birth:{getDateOfBirth()}");
-            getAddress();
+            Console.WriteLine($"Date of birth:{GetDateOfBirth()}");
+            PrintPersonInfo();
+            GetAddress();
             Console.WriteLine($"Phone number:{PhoneN}");
         }
+
+
     }
 }
