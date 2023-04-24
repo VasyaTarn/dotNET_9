@@ -1,10 +1,24 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace dotNET_9
 {
 
-    class Student : Person
+    //class StudentComparer : IComparer<Student>
+    //{
+    //    public int Compare(Student s1, Student s2)
+    //    {
+    //        if (s1.AvrgGrade < s2.AvrgGrade)
+    //            return 1;
+    //        else if (s1.AvrgGrade > s2.AvrgGrade)
+    //            return -1;
+    //        else
+    //            return 0;
+    //    }
+    //}
+
+    class Student : Person, IComparable<Student>
     {
         private string lastName;
         private string name;
@@ -165,15 +179,20 @@ namespace dotNET_9
 
         public void PrintStudentInfo()
         {
-            Console.WriteLine($"Last name:{LName}");
-            Console.WriteLine($"Name:{Name}");
-            Console.WriteLine($"Surname:{Surname}");
-            Console.WriteLine($"Date of birth:{GetDateOfBirth()}");
-            PrintPersonInfo();
-            GetAddress();
-            Console.WriteLine($"Phone number:{PhoneN}");
+            //Console.WriteLine($"Last name:{LName}");
+            Console.WriteLine($"{Name}({AvrgGrade})");
+            //Console.WriteLine($"Surname:{Surname}");
+            //Console.WriteLine($"Date of birth:{GetDateOfBirth()}");
+            //PrintPersonInfo();
+            //GetAddress();
+            //Console.WriteLine($"Phone number:{PhoneN}");
         }
 
+        public int CompareTo(Student s)
+        {
+            if (s is null) throw new ArgumentException("Incorrect parameter value");
+            return AvrgGrade - s.AvrgGrade;
+        }
 
     }
 }

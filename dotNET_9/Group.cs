@@ -68,7 +68,7 @@ namespace dotNET_9
 
             for(int i = 0; i < sortStuds.Count(); i++)
             {
-                Console.WriteLine($"{i + 1}. {sortStuds[i].Name} - {sortStuds[i].GetDateOfBirth()}");
+                Console.WriteLine($"{i + 1}. {sortStuds[i].Name}({sortStuds[i].AvrgGrade}) - {sortStuds[i].GetDateOfBirth()}");
             }
         }
 
