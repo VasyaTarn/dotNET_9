@@ -5,19 +5,6 @@ using System.Collections.Generic;
 namespace dotNET_9
 {
 
-    //class StudentComparer : IComparer<Student>
-    //{
-    //    public int Compare(Student s1, Student s2)
-    //    {
-    //        if (s1.AvrgGrade < s2.AvrgGrade)
-    //            return 1;
-    //        else if (s1.AvrgGrade > s2.AvrgGrade)
-    //            return -1;
-    //        else
-    //            return 0;
-    //    }
-    //}
-
     class Student : Person, IComparable<Student>
     {
         private string lastName;
