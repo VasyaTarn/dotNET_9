@@ -1,10 +1,58 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace dotNET_9
 {
-    class Group
+
+    class StudentEnumerator : IEnumerator
+    {
+        public List<Student> studs;
+
+        int position = -1;
+
+        public StudentEnumerator(List<Student> list)
+        {
+            studs = list;
+        }
+
+        public bool MoveNext()
+        {
+            position++;
+            return (position < studs.Count);
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        public Person Current
+        {
+            get
+            {
+                try
+                {
+                    return studs[position];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
+    }
+
+    class Group : IEnumerable
     {
         private List<Student> studs;
         private string name;
@@ -147,6 +195,11 @@ namespace dotNET_9
                 if (index >= 0 && index < studs.Count)
                     studs[index] = value;
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new StudentEnumerator(studs);
         }
     }
 }

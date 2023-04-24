@@ -31,7 +31,12 @@ namespace dotNET_9
                 students[i].PrintStudentInfo();
             }
 
+            Console.WriteLine();
 
+            foreach(Student item in grp)
+            {
+                Console.WriteLine(item.Name);
+            }
 
         }
     }
