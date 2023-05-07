@@ -59,6 +59,8 @@ namespace dotNET_9
         private string specialization;
         private int courseNumber;
 
+        public delegate bool Comparer(Student obj1, Student obj2);
+
         public Group()
         {
             int len = new Random().Next(1, 10);
@@ -200,6 +202,22 @@ namespace dotNET_9
         public IEnumerator GetEnumerator()
         {
             return new StudentEnumerator(studs);
+        }
+
+        public void Sort(List<Student> stud, Comparer rate)
+        {
+            for (int i = 0; i < stud.Count; i++)
+            {
+                for (int j = i + 1; j < stud.Count; j++)
+                {
+                    if (rate(stud[j], stud[i]))
+                    {
+                        Student temp = stud[i];
+                        stud[i] = stud[j];
+                        stud[j] = temp;
+                    }
+                }
+            }
         }
     }
 }
