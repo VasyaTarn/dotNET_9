@@ -16,6 +16,9 @@ namespace dotNET_9
         private int avrgGrade;
         private bool isPassed;
 
+        public delegate void StudentHandler(string message);
+        public event StudentHandler Notify;
+
         public Student()
         {
             Random rand = new Random();
@@ -181,5 +184,14 @@ namespace dotNET_9
             return AvrgGrade - s.AvrgGrade;
         }
 
+        public void OversleptClass()
+        {
+            Notify.Invoke($"Student {this.Name} overslept class");
+        }
+
+        public void PassedExams()
+        {
+            Notify.Invoke($"Student {this.Name} passed the exams");
+        }
     }
 }

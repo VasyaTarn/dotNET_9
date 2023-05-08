@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace dotNET_9
 {
     class Program
@@ -16,6 +17,7 @@ namespace dotNET_9
             students.Add(new Student("LastName3", "Name2", "Surname3", "Street3", 33, 44, "City3", "+380333333333", "3.3.2033", 80, true));
             Student stud4 = new Student("LastName4", "Name3", "Surname4", "Street4", 44, 55, "City4", "+380444444444", "4.4.2044", 70, true);
             Group grp = new Group(students, "Grp1", "Spec1", 123);
+
             grp.PrintInfo();
             grp.AddStud(stud4);
             Console.WriteLine();
@@ -61,6 +63,21 @@ namespace dotNET_9
             //{
             //    Console.WriteLine($"Key:{item.Key.Name} | Value:{item.Value}");
             //}
+
+            Console.WriteLine();
+            Student randStud = new Student("LastName4", "Bob", "Surname4", "Street4", 44, 55, "City4", "+380444444444", "4.4.2044", 70, true);
+
+            randStud.Notify += DisplayMessage;
+
+            randStud.OversleptClass();
+            randStud.PassedExams();
+
+
+        }
+
+        static void DisplayMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
